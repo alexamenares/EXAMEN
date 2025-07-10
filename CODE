@@ -1,0 +1,114 @@
+#caracteristicas_d_productos(): 
+productos = {
+        '8475HD': ['hp', 15.6, '8GB', 'DD', '1T', 'Intel Core i5', 'Nvidia GTX1050'],
+        '2175HD': ['lenovo', 14, '4GB', 'SSD', '512GB', 'Intel Core i5', 'Nvidia GTX1050'],
+        'JjfFHD': ['asus', 14, '16GB', 'SSD', '256GB', 'Intel Core i7', 'Nvidia RTX2080Ti'],
+        'fgdxFHD': ['hp', 15.6, '8GB', 'DD', '1T', 'Intel Core i3', 'integrada'],
+        'GF75HD': ['asus', 15.6, '8GB', 'DD', '1T', 'Intel Core i7', 'Nvidia GTX1050'],
+        '123FHD': ['lenovo', 14, '6GB', 'DD', '1T', 'AMD Ryzen 5', 'integrada'],
+        '342FHD': ['lenovo', 15.6, '8GB', 'DD', '1T', 'AMD Ryzen 7', 'Nvidia GTX1050'],
+        'UWU131HD': ['dell', 15.6, '8GB', 'DD', '1T', 'AMD Ryzen 3', 'Nvidia GTX1050'],           
+        }
+
+#stock_d_productos(modelo/precio): 
+stocks_marca= {'8475HD': [387990,10],
+'2175HD': [327990,4], 
+'JjfFHD': [424990,1],
+'fgdxFHD': [664990,21], 
+'123FHD': [290890,32], 
+'342FHD': [444990,7],
+'GF75HD': [749990,2], 
+'UWU131HD': [349990,1], 
+'FS1230HD': [249990,0], 
+ }
+
+#opcion 1
+def Stock_marca():
+    while True:
+        try:
+            marca = input("ingrese la marca que busca")
+            marca.lower
+            marca = []
+            for codigo, in productos.items():
+                if marca [1].lower() == ''.lower():
+                    marca += Stock_marca[codigo][1]
+                    stock_marca(marca)
+                    print(f' "total de stock por marca es" "{marca}"')  
+                
+        except ValueError:
+                print("Error, ingrese de nuevo")
+                
+                break
+                      
+#opcion2    
+def Búsqueda_por_precio():
+    while True:
+        try:
+            marca_rango = []
+            p_min = int(input("Ingrese el precio minimo"))
+            p_max = int(input("Ingrese el precio máximo"))
+            for codigo, in productos.items():
+                precio = stocks_marca[codigo][0]
+            if p_min <= precio <= p_max and productos[codigo][1] > 0:
+                marca_rango.append(f'{productos[0]} -- {codigo}')
+                marca_rango(p_min,p_max)
+            break
+        except ValueError:
+            print("Error, debe ingresar valores enteros")
+            
+            break
+            
+            
+#opcion3   
+def Actualizar_precio():
+    while True:
+        try:
+            codigo = (input("Ingrese codigo del producto"))
+            nuevo_precio = int(input("Ingrese nuevo precio"))
+            if codigo in stocks_marca:
+                productos[codigo][0] = nuevo_precio
+                nuevo_precio = stocks_marca[productos][0]
+                if Actualizar_precio(codigo, nuevo_precio):
+                    return True
+                    print("Precio actualizado")
+                else:
+                    return False
+                    print("El código no existe")
+                    
+                continuar = input("¿Desea actualizar otro precio(s/n)?")
+                if continuar.lower()!='s':
+                    break
+                  
+        except ValueError:
+            print("Error, ingrese de nuevo")
+            
+            break
+         
+    
+#MENU
+def main():
+    while True:
+        try:
+                print("Bienvenido a Pybooks")
+                print("1.Stock marca")
+                print("2.Búsqueda por precio")
+                print("3.Actualizar precio")
+                print("4.Salir")
+                opcion = int(input("Ingrese su opción"))
+    
+                if opcion == 1:
+                    Stock_marca()
+                
+                elif opcion == 2:
+                    Búsqueda_por_precio()
+                    
+                elif opcion == 3:
+                    Actualizar_precio()
+                    
+                elif opcion == 4:
+                    print("saliendo del sistema")
+        except ValueError:
+            print("Error, Ingrese de numero valido")
+            
+            break
+main()
